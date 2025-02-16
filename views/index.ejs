@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formatting Data</title>
+  </head>
+  <body>
+    <h2>CHATS DATA ARE BELOW</h2>
+    <form action="/chats/new" method="GET">
+        <button> New Chat</button>
+    </form>
+    <div>
+      <% for(user of chats){ %>
+      <!-- <h3>ID is : <%= user.id %></h3> -->
+      <h3>From user : <%= user.from %></h3>
+      <h3>To user :<%= user.to %></h3>
+      <h3>Msg is :<%= user.msg %></h3>
+      <form method="GET" action="/chats/<%=user.id%>/edit">
+        <button>
+            Edit
+        </button>
+      </form>
+      <h3>Created on : <%= user.created_at.toString().split(" ")[4] %></h3>
+      <h3>Created on : <%= user.created_at.toString().split(" ").slice(0,4).join(" ") %></h3>
+      <br />
+      <hr>
+      <% } %>
+    </div>
+  </body>
+</html>
